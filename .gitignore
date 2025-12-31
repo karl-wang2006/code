@@ -36,3 +36,37 @@
 *.app
 
 # End of https://www.toptal.com/developers/gitignore/api/c++
+# ========== Visual Studio (VS) 相关忽略规则 ==========
+## VS 项目文件
+*.sln
+*.suo
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.vcproj
+*.vspscc
+*.vssscc
+*.dbmdl
+*.jfm
+*.log
+
+## VS 编译目录
+Debug/
+Release/
+x64/
+x86/
+ipch/
+.vs/
+bin/
+obj/
+
+## VS 生成的临时文件
+*.sbr
+*.bsc
+*.ilk
+*.pdb
+*.idb
+*.pch
+*.tlog
+*.log
+*.lastbuildstate
