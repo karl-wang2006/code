@@ -1,0 +1,8 @@
+﻿  文件.c
+D:\c语言\练习\保护好你的文件！\保护好你的文件！\文件.c(38,22): warning C4013: “time”未定义；假设外部返回 int
+  正在生成代码
+  1 of 8 functions (12.5%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  已完成代码的生成
+  保护好你的文件！.vcxproj -> D:\c语言\练习\保护好你的文件！\x64\Release\保护好你的文件！.exe
