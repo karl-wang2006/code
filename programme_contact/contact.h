@@ -41,6 +41,16 @@ typedef struct con
 	int capacity;
 } con;
 
+enum Option
+{
+	EXIT,
+	ADD,
+	DELETE,
+	SREACH,
+	MODIFY,
+	SHOW,
+	SORT,
+};
 //º¯ÊýÉùÃ÷
 void init_contact(con*);
 //Ìí¼Ó
@@ -64,3 +74,5 @@ void modify_info_by_idx(con*, int);
 void menu();
 
 void destructor(con*);
+
+void Check_Memory(con*);

@@ -22,16 +22,16 @@ int main()
 		}
 		switch (input)
 		{
-		case 0:
+		case EXIT:
 			printf("The program has successfully exited.\n");
 			break;
-		case 1:
+		case ADD:
 			add_info(&contact);
 			break;
-		case 2:
+		case DELETE:
 			delete_info(&contact);
 			break;
-		case 3:
+		case SREACH:
 			 flag = search_info(&contact);
 			 if (flag != -1)
 			 {
@@ -50,13 +50,13 @@ int main()
 				 }
 			 }
 			break;
-		case 4:		
+		case MODIFY:
 			modify_info(&contact);
 			break;
-		case 5:
+		case SHOW:
 			show_info(&contact);
 			break;
-		case 6:
+		case SORT:
 			sort_info(&contact);
 			break;
 		default:

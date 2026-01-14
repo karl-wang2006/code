@@ -12,6 +12,33 @@ void menu()
 	printf("******************************************\n");
 }
 
+void Load_File(con* pc)
+{
+	assert(pc);
+	FILE* pfile = fopen("contact.txt", "rb");
+	if (NULL == pfile)
+	{
+		printf("No previous info.Creating contact.txt...\n");
+		FILE* pfile2=fopen("contact.txt", "wb");
+		if (pfile2 == NULL)
+		{
+			perror("Failed to create contact.txt\n"); 
+			exit(EXIT_FAILURE); 
+		}
+		fclose(pfile2);
+		pfile2 = NULL;
+		return;
+	}
+	peo_info tmp = { 0 };
+	while (1 == fread(&tmp, sizeof(peo_info), 1, pfile))
+	{
+		Check_Memory(pc);
+		pc->data[pc->size] = tmp;
+		pc->size++;
+	}
+	fclose(pfile);
+}
+
 void init_contact(con* pc)
 {
 	peo_info* ptr = (peo_info*)calloc(INIT_SIZE, sizeof(peo_info));
@@ -24,6 +51,7 @@ void init_contact(con* pc)
 	ptr = NULL;
 	pc->size = 0;
 	pc->capacity = INIT_SIZE;
+	Load_File(pc);
 	printf("Initialization success!\n");
 }
 
@@ -50,22 +78,27 @@ void show_info(const con* pc)
 	printf("\n");
 }
 
-void add_info(con* pc)
+void Check_Memory(con* pc)
 {
 	assert(pc);
-	if (pc->size == pc->capacity) 
+	if (pc->size == pc->capacity)
 	{
 		peo_info* ptr = realloc(pc->data, (pc->capacity + ADD_SIZE) * sizeof(peo_info));
 		if (ptr == NULL)
 		{
-			printf("Not enough space.\n");
-			return;
+			perror("Check_Memory");
+			exit(EXIT_FAILURE);
 		}
 		pc->data = ptr;
 		ptr = NULL;
 		pc->capacity += ADD_SIZE;
 		printf("The contact has allocated.\n");
 	}
+}
+
+void add_info(con* pc)
+{
+	Check_Memory(pc);
 	printf("please enter the name:");
 	scanf("%s", pc->data[pc->size].name);
 	printf("please enter the gender:");
@@ -81,6 +114,24 @@ void add_info(con* pc)
 
 void destructor(con* pc)
 {
+	assert(pc);
+	FILE* pfile = fopen("contact.txt", "wb");
+	if (pfile == NULL)
+	{
+		perror("Destructor");
+		exit(EXIT_FAILURE);
+	}
+	for (int i = 0; i < pc->size; i++)
+	{
+		size_t num = fwrite(pc->data + i, sizeof(peo_info), 1, pfile);
+		if (num != 1)
+		{
+			printf("Some info failed to be written.\n");
+			break;
+		}
+	}
+	printf("The info has been saved.\n");
+	fclose(pfile);
 	free(pc->data);
 	pc->data = NULL;
 	printf("The contact has freed.\n");
@@ -237,6 +288,6 @@ void sort_info(con* pc)
 	assert(pc);
 	int(*ptr)(const void*,const void*) = cmp_by_acronym;
 	qsort(pc->data, pc->size, sizeof(pc->data[0]), ptr);
-	printf("Sorting seccess.\n");
+	printf("Sorting success.\n");
 	printf("\n");
 }
