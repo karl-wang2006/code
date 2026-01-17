@@ -46,7 +46,7 @@ int My_atoi(const char* pc)
 		{
 			return flag*ret;
 		}
-		//从前向后计算
+		//浠庡悗鍚戝墠璁＄畻
 		ret = ret * 10 + (*pc - '0');
 		pc++;
 		if (flag==1 && ret > INT_MAX)
