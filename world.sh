@@ -40,7 +40,7 @@ fi
 
 # 推送到远程仓库
 echo "正在推送到GitHub..."
-git push --timeout=10 -v
+GIT_HTTP_TIMEOUT=10 git push -v
 
 if [ $? -eq 0 ]; then
     echo -e "${GREEN}代码提交成功！${NC}"
