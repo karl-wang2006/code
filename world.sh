@@ -44,7 +44,9 @@ git push
 
 if [ $? -eq 0 ]; then
     echo -e "${GREEN}代码提交成功！${NC}"
+    read -p "按任意键继续..."
 else
     echo -e "${RED}推送失败，请检查网络连接或远程仓库配置${NC}"
+    read -p "按任意键继续..."
     exit 1
 fi
