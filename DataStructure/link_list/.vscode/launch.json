@@ -1,0 +1,39 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            // 调试任务的名称，会显示在调试面板里
+            "name": "(gdb) 调试链表项目",
+            // 调试器类型，Linux/WSL下用cppdbg
+            "type": "cppdbg",
+            // 启动方式：launch是启动程序调试，attach是附加到正在运行的程序
+            "request": "launch",
+            // 要调试的可执行文件的路径，和我们编译输出的路径一致
+            "program": "${workspaceFolder}/link_list_test",
+            // 程序的启动参数，这里我们不需要参数，留空即可
+            "args": [],
+            // 是否在程序入口就停下来，默认false，不用停
+            "stopAtEntry": false,
+            // 程序的工作目录，就是项目根目录
+            "cwd": "${workspaceFolder}",
+            // 环境变量，留空即可
+            "environment": [],
+            // 是否用外部终端，默认false，用VSCode的内部终端就行
+            "externalConsole": false,
+            // 调试器的模式，WSL/Linux用gdb
+            "MIMode": "gdb",
+            // gdb调试器的路径，WSL下默认就是这个路径
+            "miDebuggerPath": "/usr/bin/gdb",
+            // gdb的美化打印配置，让调试的时候查看变量更友好
+            "setupCommands": [
+                {
+                    "description": "为gdb开启美化打印",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            // 调试前自动执行的任务，这里就是我们的编译任务，保证调试的是最新的代码
+            "preLaunchTask": "C/C++: gcc 编译链表项目"
+        }
+    ]
+}
