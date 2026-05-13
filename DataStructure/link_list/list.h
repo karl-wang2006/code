@@ -50,3 +50,18 @@ void DeleteRepeatedNode(node* head, int n);
 
 //reverse the list and return the new head node pointer
 node* ReverseList(node* head);
+
+//Recursive Version
+node* ReverseListRecursively(node* head);
+
+//Find the middle mode of the list
+node* FindMiddleNode(node* head);
+
+//Rearrange the node: 1,2,3,4...n-1,n->1,n,2,n-1,3,n-2...
+void RearrangeList1(node* head);
+
+//determine whether the list has a loop
+int HasLoop(node* head);
+
+//Find the loop entry in the list
+node* FindLoopEntry(node* head);

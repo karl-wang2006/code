@@ -208,9 +208,9 @@ void DeleteRepeatedNode(node* head, int n)
         if (arr[num] == 0) //first-appeared
         {
             arr[num] += 1;
-            head = head->next;
+            head = head->next; // This needs.
         }
-        else //not first-appeared
+        else //not first-appeared. No need to step to next node!!!
         {
             node* tmp = head->next;
             head->next = tmp->next;
@@ -245,4 +245,107 @@ node* ReverseList(node* head)
     p2->next = p1;
     head->next = p2;
     return head;
+}
+
+node* ReverseListRecursively_NoHead(node* p1)// must return the new head node !
+{
+    if (p1 == NULL || p1->next == NULL) //base case: only one node
+    {
+        return p1;
+    }
+    node* p2 = p1->next;
+    node* newnode = ReverseListRecursively_NoHead(p1->next); //reverse the list not including p1 node
+    p2->next = p1;
+    p1->next = NULL;
+    return newnode;
+}
+
+node* ReverseListRecursively(node* head)
+{
+    if (head == NULL || head->next == NULL) 
+    {
+        return head;
+    }
+
+    node* newnode = ReverseListRecursively_NoHead(head->next);
+    head->next = newnode; //reconnect the head node
+    return head;
+}
+
+//Find the middle mode of the list
+node* FindMiddleNode(node* head)
+{
+    if(head == NULL || head->next == NULL)
+    {
+        return head;
+    }
+    node* fast = head->next;
+    node* slow = head->next;
+    while(fast != NULL && fast->next != NULL)
+    {   
+        fast = fast->next->next;
+        slow = slow->next;
+    }
+    return slow;
+}
+
+//Rearrange the node: 1,2,3,4...n-1,n->1,n,2,n-1,3,n-2...
+void RearrangeList1(node* head)
+{
+    node* p1 = head->next;
+    node* q11 = FindMiddleNode(head);
+    node* q1 = ReverseListRecursively_NoHead(q11);
+    node* tmp = q1;
+    while(p1->next != q11)
+    {
+        node* tmp2 = p1->next;
+        p1->next = q1;
+        p1 = tmp2;
+        node* tmp3 = q1->next;
+        q1->next = p1;
+        q1 = tmp3;
+    }
+    p1->next = q1;
+}
+
+//determine whether the list has a loop
+int HasLoop(node* head)
+{
+    node* fast = head;
+    node* slow = head;
+    while(fast && fast->next)
+    {
+        fast = fast->next->next;
+        slow = slow->next;
+        if(fast == slow)
+        {
+            return 1;
+        }
+    }
+    return 0;
+}
+
+//Find the loop entry in the list
+node* FindLoopEntry(node* head)
+{
+    if(!HasLoop(head))
+    {
+        return NULL;
+    }
+    node* fast = head->next;
+    node* slow = head->next;
+    do 
+    {
+        fast = fast->next-> next;
+        slow = slow->next;
+    }
+    while(fast != slow);
+     
+    slow = head ->next;
+    while(fast != slow)
+    {
+        fast = fast->next;
+        slow = slow->next;
+    }
+    return fast;
 }
