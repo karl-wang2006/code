@@ -28,7 +28,7 @@ size_t length(node* pc);
 int add_node_head(node* pc,dataType ele);
 
 //add node at the tail of linked list
-void  add_node_tail(node* pc,dataType ele);
+void add_node_tail(node* pc,dataType ele);
 
 //insert ele in the position of idx(0 idx denotes the first node after the head node)
 void add_node_idx(node* pc,size_t idx,dataType ele);
@@ -38,6 +38,9 @@ void del_node_idx(node* pc,size_t idx);
 
 //destruct the list
 void destructor_list(node** pc);
+
+
+
 
 //Find the k-th node from the end of a linked list
 node* FindKthLastNode(node* head, int k);
