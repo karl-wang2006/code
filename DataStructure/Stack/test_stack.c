@@ -3,15 +3,8 @@
 int main()
 {
     Stack* stack = InitStack();
-    // printf("%d\n",IsEmptyStack(stack));
-    ShowStack(stack);
-    PushStack(stack,4);
-
-    PushStack(stack,5);
-    PushStack(stack,7);
-    printf("%d\n",GetTopEle(stack));
-    PushStack(stack,9);
-    PopStack(stack);
-    ShowStack(stack);
+    char test[] = "((5+6)-3)*(8/4)-(((3+7)-2/1)*2+9)";
+    printf("%s\n",InfixToPostfix(test));
+    printf("%d\n",CalPostfix(InfixToPostfix(test)));
     return 0;
 }
