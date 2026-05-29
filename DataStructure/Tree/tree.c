@@ -166,7 +166,7 @@ void InorderThread(BiTree head)
     
 }
 
-// 遍历中序线索二叉树
+// Traverse the in-order threaded binary tree
 void InorderThreadTraverse(BiTree head)
 {
     //initialize the pointer to the root
