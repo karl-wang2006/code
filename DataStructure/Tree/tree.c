@@ -1,5 +1,6 @@
 #include "tree.h"
 
+
 //prev records the previous node
 BiTree prev;
 
@@ -254,3 +255,31 @@ BiTree CreateThrTree(eletype* arr,int n,int idx)
 
     return head;
 }
+
+//Given the root node, traverse the binary tree and print the ele by level order
+// void LevelOrderTraverse(BiTree root)
+// {   
+//     if(root == NULL)
+//     {
+//         return;
+//     }
+//     Queue* q = InitQueue();
+//     PushQueue(q, root);
+//     while(!IsEmpty(q))
+//     {
+//         BiTree tmp = PopQueue(q);
+//         printf("%d ",tmp->data);
+
+//         if(tmp->left != NULL)
+//         {
+//             PushQueue(q, tmp->left);
+//         }
+
+//         if(tmp->Right != NULL)
+//         {
+//             PushQueue(q, tmp->Right);
+//         }
+
+//     }
+//     printf("\n");
+// }

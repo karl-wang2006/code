@@ -1,0 +1,25 @@
+{
+    "version": "0.2.0",  // 调试配置版本，固定不用改
+    "configurations": [
+
+          // 调试配置列表
+        {
+            "name": "WSL C Debug",   // 调试配置名字（F5 时显示）
+            "type": "cppdbg",           // 重点！WSL 必须用 gdb（不是 cppvsdbg）
+            "request": "launch",     // 模式：启动程序调试（固定）
+            
+            "program": "${fileDirname}/test",  // 要调试的程序（刚才编译出的 test）
+            "args": [],            // 运行程序时传的参数（没有就空着）
+            
+            "cwd": "${fileDirname}",// 工作目录：当前文件夹（必须写对）
+            
+            "preLaunchTask": "gcc build", // 关键！调试前先执行上面的编译任务
+            "stopAtEntry": false,   // 启动时是否停在 main 函数（false=不停）
+            "externalConsole": false,// 不弹出外部黑窗口，用 VSCode 内置终端
+            
+            // ========= WSL 调试核心配置 =========
+            "MIMode": "gdb",        // 使用 gdb 调试器
+            "miDebuggerPath": "/usr/bin/gdb" // WSL 里 gdb 的路径
+        }
+    ]
+}

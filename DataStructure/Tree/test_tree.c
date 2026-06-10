@@ -1,5 +1,6 @@
 #include "tree.h"
 
+
 //中序线索二叉树的规则：
 //站在一个节点上，去找它的前继和后继，这就是遍历的流程思路
 //后继：两种情况，1. 当前节点有右孩子，走到右孩子节点再一路向左直至没有左孩子为止，此时停在的节点就是该节点的后继节点
@@ -19,9 +20,10 @@ int main()
     int n = sizeof(arr)/sizeof(arr[0]);
     BiTree tree = CreateThrTree(arr,n,0);
     InorderThreadTraverse(tree);//8 4 2 5 1 6 3 7
-    BiTree p = GetInorderPredecessor(tree->Right);
-    BiTree q = GetInorderSuccessor(tree->Right);
-    printf("%d\n",p->data);//3
-    printf("%d\n",q->data);//head:0
-    return 0;
+    // BiTree p = GetInorderPredecessor(tree->Right);
+    // BiTree q = GetInorderSuccessor(tree->Right);
+    // printf("%d\n",p->data);//3
+    // printf("%d\n",q->data);//head:0
+    // return 0;
+    // LevelOrderTraverse(tree->left);
 }

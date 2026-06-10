@@ -2,9 +2,14 @@
 #include<assert.h>
 #include<stdlib.h>
 
+struct TreeNode;
+typedef struct TreeNode* BiTree;
+
+typedef int eletype;
+
 typedef struct QueueNode
 {
-    int data;
+    eletype data;
     struct QueueNode* next;
 }QueueNode;
 
@@ -21,7 +26,10 @@ Queue* InitQueue();
 void ShowQueue(Queue* q);
 
 //push ele in the queue
-void PushQueue(Queue* q, int ele);
+void PushQueue(Queue* q, eletype ele);
 
 //pop ele in the front and return the ele
-int PopQueue(Queue* q);
+eletype PopQueue(Queue* q);
+
+//determine whether the queue is empty. If empty, return 1
+int IsEmpty(Queue* q);

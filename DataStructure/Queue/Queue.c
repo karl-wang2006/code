@@ -31,7 +31,7 @@ void ShowQueue(Queue* q)
 }
 
 //push ele in the queue
-void PushQueue(Queue* q, int ele)
+void PushQueue(Queue* q, eletype ele)
 {
     assert(q != NULL);
     QueueNode* new_node = (QueueNode*)malloc(sizeof(QueueNode));
@@ -42,7 +42,7 @@ void PushQueue(Queue* q, int ele)
 }
 
 //pop ele in the front and return the ele
-int PopQueue(Queue* q)
+eletype PopQueue(Queue* q)
 {
     assert(q != NULL);
     QueueNode* tmp = q->front->next;
@@ -51,11 +51,23 @@ int PopQueue(Queue* q)
         return -1;
     }
     q->front->next = tmp->next;
-    int ret = tmp->data;
+    eletype ret = tmp->data;
     if(tmp == q->rear) // the front node is the last node
     {
         q->rear = q->front;
     }
     free(tmp);
     return ret;
+}
+
+int IsEmpty(Queue* q)
+{
+    if(q->rear == q->front)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
 }
