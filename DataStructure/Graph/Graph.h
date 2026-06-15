@@ -1,3 +1,6 @@
+#ifndef GRAPH_H
+#define GRAPH_H
+
 #include<stdio.h>
 #include<assert.h>
 #include<stdlib.h>
@@ -5,7 +8,7 @@
 #define MAX 50
 
 // type of the vertex
-typedef int VertexType;
+typedef char VertexType;
 
 // type of the edge
 typedef int EdgeType;
@@ -40,7 +43,7 @@ typedef struct AdjGraph
     VertexNode adjlist[MAX];
     int vertex_num;
     int edge_num;
-}
+}AdjGraph;
 
 
 
@@ -49,11 +52,11 @@ typedef struct AdjGraph
  * @param  vNum       Total number of vertices in the graph
  * @param  eNum       Total number of edges in the graph
  * @param  vertices   the character vertices array
- * @param  edges      2D array storing all edges, each element is [u, v] representing an edge from u to v
+ * @param  edges      2D array storing all edges, each element is [u, v, t] representing an edge from u to v and the weight is t
  * @param  IsDirected 1 for directed graph, 0 for undirected graph
  * @return Mgraph*
  */
-Mgraph* CreateMGraph_Auto(int vNum, int eNum, char vertices[], int edges[][2],int IsDirected);
+Mgraph* CreateMGraph_Auto(int vNum, int eNum, char vertices[], int edges[][3],int IsDirected);
 
 /** 
  * @brief print the vertex array and adjacency matrix
@@ -61,3 +64,8 @@ Mgraph* CreateMGraph_Auto(int vNum, int eNum, char vertices[], int edges[][2],in
  * @return None          
 */
 void PrintMGraph(Mgraph* G);
+
+void prim(Mgraph* G);
+
+
+#endif
