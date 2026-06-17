@@ -25,15 +25,18 @@ int main()
     int eNum = sizeof(edges)/sizeof(edges[0]);
     int Isdirected = 0;
 
-    Mgraph* G = CreateMGraph_Auto(vNum, eNum, vertices, edges, 0);
-    PrintMGraph(G);
+    //Mgraph* G = CreateMGraph_Auto(vNum, eNum, vertices, edges, 0);
+    // PrintMGraph(G);
 
-    prim(G);
-    //AdjGraph* G1 = CreateAdjGraph_Auto(vNum, eNum, vertices, edges, Isdirected=0);
 
-    //PrintAdjGraph(G1);
+    // prim(G);
+    // dfs_traverse(G);
+    // bfs_traverse(G);
+    AdjGraph* G1 = CreateAdjGraph_Auto(vNum, eNum, vertices, edges, Isdirected=0);
 
-    //free(G1);
-    free(G);
+    PrintAdjGraph(G1);
+
+    free(G1);
+    //free(G);
     return 0;
 }

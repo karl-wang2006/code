@@ -45,7 +45,9 @@ typedef struct AdjGraph
     int edge_num;
 }AdjGraph;
 
+AdjGraph* CreateAdjGraph_Auto(int vNum,int eNum,char* vertices,int edges[][3],int Isdirected);
 
+PrintAdjGraph(AdjGraph* G);
 
 /**
  * @brief  Automatically creates an adjacency matrix graph (directed or undirected)
@@ -66,6 +68,12 @@ Mgraph* CreateMGraph_Auto(int vNum, int eNum, char vertices[], int edges[][3],in
 void PrintMGraph(Mgraph* G);
 
 void prim(Mgraph* G);
+
+void dfs(Mgraph* G, int i,int* visited);
+
+void dfs_traverse(Mgraph* G);
+
+void bfs_traverse(Mgraph* G);
 
 
 #endif

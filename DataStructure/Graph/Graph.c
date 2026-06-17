@@ -72,6 +72,19 @@ void PrintMGraph(Mgraph* G)
     }
 }
 
+AdjGraph* CreateAdjGraph_Auto(int vNum,int eNum,char* vertices,int edges[][3],int Isdirected)
+{
+    AdjGraph* G = (AdjGraph*)malloc(sizeof(AdjGraph));
+    G->vertex_num = vNum;
+    G->edge_num = eNum;
+
+    //for(int i = 0; i < )
+}
+
+PrintAdjGraph(AdjGraph* G)
+{
+
+}
 
 void prim(Mgraph* G)
 {
@@ -120,4 +133,61 @@ void prim(Mgraph* G)
             }
         }
     }
+}
+
+void dfs_traverse(Mgraph* G)
+{
+    int visited[MAXSIZE] = {0};
+    dfs(G, 0, visited);
+    printf("\n");
+}
+
+void dfs(Mgraph* G,int i,int* visited)
+{
+    visited[i] = 1;
+    printf("%c ",G->vertex[i]);
+
+    for(int j = 0; j < G->vertex_num; j++)
+    {
+        if(G->edge[i][j] > 0 && G->edge[i][j] < MAX && visited[j] == 0)
+        {
+            dfs(G,j,visited);
+        }
+    }
+}
+
+void bfs_traverse(Mgraph* G)
+{
+    int queue[MAXSIZE];
+    int rear = 0;
+    int front = 0;
+    int visited[MAXSIZE] = {0};
+    for(int i = 0; i < G->vertex_num; i++)
+    {
+        if(visited[i] == 0)
+        {
+            front = rear = 0;
+            printf("%c ",G->vertex[i]);
+            queue[rear++] = i;
+            visited[i] = 1;
+        
+            while(rear != front)
+            {
+
+            int cur = queue[front];
+            front++;
+
+            for(int j = 0; j < G->vertex_num; j++)
+                {
+                    if(G->edge[cur][j] > 0 && G->edge[cur][j] < MAX && visited[j] == 0)
+                    {
+                        printf("%c ",G->vertex[j]);
+                        visited[j] = 1;
+                        queue[rear++] = j;
+                    }
+                }
+            }
+        }
+    }
+    printf("\n");
 }
